@@ -67,6 +67,9 @@
 //#include "analogWrite.h"
 #include "ESP32PWM.h"
 //#include "ESP32Tone.h"
+
+#include <ServoMotorConfig.h>
+
 //Enforce only using PWM pins on the ESP32
 #define ENFORCE_PINS
 // Default Arduino Servo.h
@@ -130,6 +133,7 @@ class Servo {
 
 public:
 	Servo();
+	Servo(int pin);
 	// Arduino Servo Library calls
 	int attach(int pin); // attach the given pin to the next free channel, returns channel number or 0 if failure
 	int attach(int pin, int min, int max); // as above but also sets min and max values for writes.
@@ -166,4 +170,7 @@ private:
 	int REFRESH_CPS = 50;
 
 };
+
+extern Servo myservo;
+
 #endif

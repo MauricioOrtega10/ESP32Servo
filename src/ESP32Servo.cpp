@@ -65,6 +65,20 @@ Servo::Servo()
 	this->timer_width_ticks = pow(2,this->timer_width);
 
 }
+
+Servo::Servo(int pin)
+{		// initialize this channel with plausible values, except pin # (we set pin # when attached)
+	REFRESH_CPS = 50;
+	this->ticks = DEFAULT_PULSE_WIDTH_TICKS;
+	this->timer_width = DEFAULT_TIMER_WIDTH;
+	this->pinNumber = -1;     // make it clear that we haven't attached a pin to this channel
+	this->min = DEFAULT_uS_LOW;
+	this->max = DEFAULT_uS_HIGH;
+	this->timer_width_ticks = pow(2,this->timer_width);
+    attach(pin);
+}
+
+
 ESP32PWM * Servo::getPwm(){
 
 	return &pwm;
@@ -254,4 +268,5 @@ int Servo::ticksToUs(int ticks)
     return (int)((double)ticks * ((double)REFRESH_USEC / (double)this->timer_width_ticks)/(((double)REFRESH_CPS)/50.0));
 }
 
+Servo servo(SERVO_MOTOR_PIN);
  
