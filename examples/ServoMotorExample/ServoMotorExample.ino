@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include <ServoMotor.h>
+#include <ESP32Servo.h> 
 
 int pos = 0;
 
