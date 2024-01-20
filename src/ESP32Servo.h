@@ -171,6 +171,6 @@ private:
 
 };
 
-extern Servo myservo;
+extern Servo servo;
 
 #endif
